@@ -67,6 +67,11 @@ const audioPathList = [
     ['10'],
     ['11'],
     ['12'],
+    ['13'],
+    ['14'],
+    ['15'],
+    ['16'],
+    ['17'],
 ]
 
 const subMarkInfoList = [
@@ -182,12 +187,10 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
         setTimeout(() => {
             let timeDuration = 4000
 
-            if (currentMaskNum < 7) {
-                audioPathList[currentMaskNum].map((value, index) => {
-                    timeDuration += bodyAudioList[index].duration * 1000 + 500
-                }
-                )
+            audioPathList[currentMaskNum].map((value, index) => {
+                timeDuration += bodyAudioList[index].duration * 1000 + 500
             }
+            )
 
             if (currentMaskNum > 6)
                 wordTextList[currentMaskNum - 7].current.setClass('appear')
@@ -240,18 +243,17 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
 
                 let time = 0
 
-                if (currentMaskNum < 7)
-                    audioPathList[currentMaskNum].map((value, index) => {
-                        setTimeout(() => {
-                            bodyAudioList[index].play()
-                        }, time);
-                        time += bodyAudioList[index].duration * 1000 + 500
-                    })
+                audioPathList[currentMaskNum].map((value, index) => {
+                    setTimeout(() => {
+                        bodyAudioList[index].play()
+                    }, time);
+                    time += bodyAudioList[index].duration * 1000 + 500
+                })
 
 
 
                 setTimeout(() => {
-                    if (currentMaskNum < 6) {
+                    if (currentMaskNum < audioPathList.length - 1) {
                         audioPathList[currentMaskNum + 1].map((value, index) => {
                             bodyAudioList[index].src = getAudioPath('intro/' + value);
                         })
