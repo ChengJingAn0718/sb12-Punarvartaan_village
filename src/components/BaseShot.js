@@ -46,7 +46,7 @@ Array.from(Array(16).keys()).map(value => {
     subAudioList.push(new loadSound('word/' + (value + 1)))
 })
 
-backAudio.volume = 0.08;
+backAudio.volume = 0.04;
 
 wooAudio.volume = 0.8;
 successAudio.volume = 0.4;

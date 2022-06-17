@@ -44,6 +44,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
     useEffect(() => {
 
 
+        setRepeatType(1)
         return () => {
             stepCount = 0;
             totalStep = 0
@@ -59,6 +60,8 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
             parentRef.current.className = 'aniObject'
             startSecondPart()
             loadFunc()
+
+            
         },
         sceneEnd: () => {
             setSceneLoad(false)

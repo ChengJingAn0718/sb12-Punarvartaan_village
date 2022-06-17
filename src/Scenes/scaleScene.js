@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useContext, useState } from 'react';
 import "../stylesheets/styles.css";
 import BaseImage from '../components/BaseImage';
 import { UserContext } from '../components/BaseShot';
-import { getAudioPath, prePathUrl } from "../components/CommonFunctions";
+import { getAudioPath, prePathUrl, setExtraVolume } from "../components/CommonFunctions";
 import { MaskComponent } from "../components/CommonComponents"
 
 
@@ -127,6 +127,13 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
         sceneStart: () => {
             baseObject.current.className = 'aniObject'
             loadFunc()
+
+
+            setExtraVolume(audioList.bodyAudio1, 4)
+            setExtraVolume(audioList.bodyAudio2, 4)
+            setExtraVolume(audioList.bodyAudio3, 4)
+            setExtraVolume(audioList.bodyAudio4, 4)
+
 
             audioList.bodyAudio1.src = getAudioPath('intro/' + audioPathList[currentMaskNum][0]);
             audioList.bodyAudio2.src = getAudioPath('intro/2');
