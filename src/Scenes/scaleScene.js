@@ -392,14 +392,13 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                             />
 
                             {/* {
-                        outLineRefList.map(
-                            (value, index) =>
+                                outLineRefList.map(
+                                (value, index) =>
                                 <BaseImage
                                     className='hideObject'
                                     ref={outLineRefList[index]}
                                 />
                         )
-
                     } */}
 
                         </div>
