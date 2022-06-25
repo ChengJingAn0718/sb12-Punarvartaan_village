@@ -6,8 +6,6 @@ import loadSound from "../utils/loadSound"
 import { prePathUrl } from "./CommonFunctions";
 import { LoadingCircleBar } from "./CommonButtons"
 
-var oldBackgroundImage = 'SB_37_Stage_BG_2';
-var _isBackSoundPlaying = true;
 
 const animationColorList = [
     ['#51c9b5', '#cc55d9', '#f55185'],
@@ -21,19 +19,19 @@ const animationColorList = [
 let titleAudio = new loadSound('intro/1');
 
 let clapAudio = new loadSound('clap', true);
-let backAudio = new loadSound('bMusic', true);
+let backAudio = new loadSound('bmusic', true);
 let yeahAudio = new loadSound('yeah', true);
 let buzzAudio = new loadSound('buzz', true);
 let tingAudio = new loadSound('ting', true);
 let wooAudio = new loadSound('woo', true);
-let replayAudio = new loadSound('replayAudio', true);
+let replayAudio = new loadSound('replayaudio', true);
 let successAudio = new loadSound('success', true);
 
 
-let bodyAudio1 = new loadSound('intro/1');
-let bodyAudio2 = new loadSound('intro/1');
-let bodyAudio3 = new loadSound('intro/1');
-let bodyAudio4 = new loadSound('intro/1');
+let bodyAudio1 = new loadSound('intro/4');
+let bodyAudio2 = new loadSound('intro/5');
+let bodyAudio3 = new loadSound('intro/6');
+let bodyAudio4 = new loadSound('intro/7');
 
 let commonAudio1 = new loadSound('common/common1');
 let commonAudio2 = new loadSound('common/common2');
@@ -91,7 +89,7 @@ let isGameLoaded = false;
 const UserContext = createContext();
 
 //remove colsoles
-console.log = function () { }
+// console.log = function () { }
 
 export default function BaseShot() {
 

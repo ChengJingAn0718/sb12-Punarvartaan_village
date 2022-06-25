@@ -7,8 +7,8 @@ import { MaskComponent } from "../components/CommonComponents"
 
 
 const maskPathList = [
-    ['1'],
-    ['2'],
+    ['sub'],
+    ['sub'],
     ['3'],
     ['4'],
     ['5'],
@@ -28,7 +28,8 @@ const maskTransformList = [
     { x: 0.6, y: -0.6, s: 2.2 },
     { x: -0.2, y: -0.15, s: 1.8 },
     { x: -0.15, y: -0.15, s: 1.3 },
-    { x: -0.5, y: 0.5, s: 2 },
+    { x: -0.6, y: 0.7, s: 2.6 },
+
     { x: -0.5, y: -0.5, s: 2 },
 
     { x: 0.0, y: 0.0, s: 1 },
@@ -46,13 +47,12 @@ let subMaskNum = 0;
 const marginPosList = [
     { s: 2, l: -0.15, t: -0.1 },
     { s: 2, l: 0.5, t: -0.3 },
-    { s: 2, l: 0.6, t: -0.6 },
+    { s: 2, l: 0.8, t: -0.6 },
     { s: 2, l: -0.2, t: -0.4 },
     { s: 2, l: -0.4, t: -0.4 },
     { s: 2, l: -0.4, t: 0.4 },
-    { s: 2, l: -0.75, t: -0.5 },
-
-    { s: 1, l: -0.4, t: 0.4 },
+    { s: 1, l: -0.3, t: -0.4 },
+    { s: 0, l: -0.4, t: 0.4 },
     { s: 2, l: 0.4, t: -0.1 },
     { s: 2, l: 0.5, t: 0.3 },
     { s: 3, l: 0.7, t: 0.2 },
@@ -76,7 +76,25 @@ const audioPathList = [
 
 const subMarkInfoList = [
     [
-        { p: '8', t: 2500, ps: 1, pl: 0.0, pt: 0.2 },
+        { p: '1_2', t: 2500, ps: 0, pl: 0.0, pt: 0.0 },
+        { p: '1_1', t: 4500, ps: 0, pl: 0.0, pt: 0.0 },
+    ],
+
+    [
+        { p: '2_1', t: 1000, ps: 0.5, pl: 0.15, pt: -0.1 },
+        { p: '2_2', t: 7000, ps: 0.5, pl: 0.15, pt: -0.1 },
+
+
+        { p: 'medcine_1', t: 10500, ps: 1, pl: 0.2, pt: -0.18 },
+        { p: 'medcine_2', t: 15000, ps: 1, pl: 0.15, pt: -0.2 },
+
+        { p: 'present', t: 19000, ps: 1, pl: 0.2, pt: -0.2 },
+
+        { p: 'ring_2', t: 24500, ps: 1, pl: 0.2, pt: -0.2 },
+    ],
+
+    [
+        { p: '8', t: 2500, ps: 0, pl: 0.0, pt: 0.0 },
     ],
     [
         { p: '9', t: 2000, ps: 2, pl: -0.4, pt: -0.4 },
@@ -85,11 +103,12 @@ const subMarkInfoList = [
         { p: '10', t: 2000, ps: 2, pl: -0.3, pt: 0 },
     ],
     [
-        { p: '11', t: 2000, ps: 2, pl: 0.4, pt: -0.3 },
-        { p: '12', t: 4000, ps: 2, pl: 0.4, pt: -0.4 },
+        { p: '11', t: 8000, ps: 0, pl: 0.0, pt: -0.0 },
+        { p: '12', t: 9000, ps: 0, pl: 0.0, pt: -0.0 },
     ],
     [
-        { p: '13', t: 3500, ps: 2, pl: 0.45, pt: -0.3 },
+        { p: '3', t: 1000, ps: 0, pl: 0.0, pt: 0.0 },
+        // { p: 'egg', t: 3000, ps: 0, pl: 0.0, pt: 0.0 },
     ]
 ]
 
@@ -107,7 +126,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
     const blackWhiteObject = useRef();
     const colorObject = useRef();
     const currentImage = useRef()
-    const subMaskRefList = Array.from({ length: 2 }, ref => useRef())
+    const subMaskRefList = Array.from({ length: 6 }, ref => useRef())
 
 
     const wordTextList = Array.from({ length: 5 }, ref => useRef())
@@ -128,16 +147,19 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
     React.useImperativeHandle(ref, () => ({
         sceneLoad: () => {
             setSceneLoad(true)
+
         },
         sceneStart: () => {
             baseObject.current.className = 'aniObject'
             loadFunc()
 
 
-            setExtraVolume(audioList.bodyAudio1, 4)
-            setExtraVolume(audioList.bodyAudio2, 4)
-            setExtraVolume(audioList.bodyAudio3, 4)
-            setExtraVolume(audioList.bodyAudio4, 4)
+            //4 to 6
+
+            setExtraVolume(audioList.bodyAudio1, 6)
+            setExtraVolume(audioList.bodyAudio2, 6)
+            setExtraVolume(audioList.bodyAudio3, 6)
+            setExtraVolume(audioList.bodyAudio4, 6)
 
 
             audioList.bodyAudio1.src = getAudioPath('intro/' + audioPathList[currentMaskNum][0]);
@@ -175,9 +197,14 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
     ]
     function showIndividualImage() {
         blackWhiteObject.current.className = 'hideObject'
-        let currentMaskName = maskPathList[currentMaskNum]
+        let currentMaskName = maskPathList[currentMaskNum][0]
 
         baseObject.current.style.transition = durationList[currentMaskNum] + 's'
+
+        if (currentMaskNum == 6)
+            baseObject.current.style.bottom = 0 + 'px'
+        else
+            baseObject.current.style.bottom = _baseGeo.bottom + 'px'
 
         baseObject.current.style.transform =
             'translate(' + maskTransformList[currentMaskNum].x * 100 + '%,'
@@ -192,6 +219,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
             }
             )
 
+
             if (currentMaskNum > 6)
                 wordTextList[currentMaskNum - 7].current.setClass('appear')
 
@@ -204,6 +232,10 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                     setTimeout(() => {
                         if (index == 0)
                             colorObject.current.className = 'hide'
+
+                        if (subMaskNum == 1 && index > 0 || subMaskNum == 5 && index > 0)
+                            subMaskRefList[index - 1].current.setClass('hide')
+
                         subMaskRefList[index].current.setClass('appear')
                         if (value.ps != null) {
                             subMaskRefList[index].current.setStyle({
@@ -247,7 +279,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                     setTimeout(() => {
                         bodyAudioList[index].play()
                     }, time);
-                    time += bodyAudioList[index].duration * 1000 + 500
+                    time += bodyAudioList[index].duration * 1000 + 1000
                 })
 
 
@@ -308,7 +340,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
 
                                 currentMaskNum++;
 
-                                currentMaskName = maskPathList[currentMaskNum]
+                                currentMaskName = maskPathList[currentMaskNum][0]
                                 if (currentMaskName != 'sub')
                                     blackWhiteObject.current.style.WebkitMaskImage = 'url("' +
                                         returnImgPath(maskPathList[currentMaskNum], true) + '")'
@@ -341,7 +373,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                         position: "fixed", width: _baseGeo.width + "px"
                         , height: _baseGeo.height + "px",
                         left: _baseGeo.left + 'px',
-                        top: _baseGeo.top + 'px',
+                        bottom: _baseGeo.bottom + 'px',
                     }}
                 >
                     <div
@@ -371,7 +403,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                             left: '0%',
                             top: '0%',
                             WebkitMaskImage: 'url("' +
-                                returnImgPath(maskPathList[2][0], true)
+                                returnImgPath(maskPathList[0][0], true)
                                 + '")',
                             WebkitMaskSize: '100% 100%',
                             WebkitMaskRepeat: "no-repeat"
@@ -391,21 +423,11 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                                 url={'bg/base.png'}
                             />
 
-                            {/* {
-                                outLineRefList.map(
-                                (value, index) =>
-                                <BaseImage
-                                    className='hideObject'
-                                    ref={outLineRefList[index]}
-                                />
-                        )
-                    } */}
-
                         </div>
                     </div>
 
                     {
-                        isSubMaskLoaded && subMarkInfoList[0].map((value, index) =>
+                        subMarkInfoList[0].map((value, index) =>
                             <MaskComponent
                                 ref={subMaskRefList[index]}
                                 maskPath={returnImgPath(value.p, true)}
@@ -415,12 +437,16 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                     }
 
                     {
-                        isSubMaskLoaded &&
-                        <MaskComponent
-                            ref={subMaskRefList[1]}
-                            maskPath={returnImgPath('12', true)}
-                        />
+                        isSubMaskLoaded && subMarkInfoList[1].map((value, index) =>
+                            index > 1 &&
+                            <MaskComponent
+                                ref={subMaskRefList[index]}
+                                maskPath={returnImgPath(value.p, true)}
+                            />
+
+                        )
                     }
+
                     <div
                         ref={colorObject}
                         style={{

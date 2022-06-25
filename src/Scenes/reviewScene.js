@@ -18,7 +18,7 @@ let activeInterval
 let timerList = []
 
 let clickedList = []
-let wordGround = [6, 6, 4]
+let wordGround = [6, 5, 4]
 
 const posInfoList = [
 
@@ -29,9 +29,9 @@ const posInfoList = [
     { x: 34, y: 70 },
     { x: 68, y: 70, m: true },
 
-    { x: 1, y: 40 },
-    { x: 34, y: 40 },
-    { x: 68, y: 40, m: true },
+
+    { x: 15, y: 40 },
+    { x: 50, y: 40 },
     { x: 1, y: 70 },
     { x: 34, y: 70 },
     { x: 68, y: 70, m: true },
@@ -98,9 +98,8 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
 
             clickedList = []
 
-            setExtraVolume(audioList.commonAudio3, 4)
-            for (let i = 0; i < 16; i++)
-                setExtraVolume(audioList[i], 4)
+            setExtraVolume(audioList.commonAudio3, 6)
+
 
             setRepeatAudio(audioList.commonAudio3)
             baseObject.current.className = 'aniObject'
@@ -218,7 +217,11 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
 
         clickedList.push(index)
 
-        audioList[index].play();
+        setTimeout(() => {
+            audioList[index].play();
+        }, 50);
+        setExtraVolume(audioList[index], 6)
+
         if (clickedList.length == doneCount + wordGround[stepCount]) {
             setTimeout(() => {
                 if (stepCount != wordGround.length - 1)
