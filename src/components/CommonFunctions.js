@@ -1,5 +1,6 @@
 import "../stylesheets/styles.css";
 
+
 var intervalList = []
 var innerIntervalList = []
 var timerList = []
@@ -167,7 +168,6 @@ export const prePathUrl = () => sharePrePath;
 export function getAudioPath(fileNum) {
     return prePathUrl() + "sounds/main/" + fileNum + '.mp3';
 }
-
 
 let primaryAudio, repeatAudio,
     repeatInterval, repeartTimer,
