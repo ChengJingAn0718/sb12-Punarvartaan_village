@@ -13,7 +13,7 @@ const maskPathList = [
     ['4'],
     ['5'],
     ['6'],
-    ['7'],
+    ['sub'],
     ['sub'],
     ['sub'],
     ['sub'],
@@ -92,7 +92,10 @@ const subMarkInfoList = [
 
         { p: 'ring_2', t: 24500, ps: 1, pl: 0.2, pt: -0.2 },
     ],
-
+    [
+        { p: '7_1', t: 2500, ps: 0, pl: 0.0, pt: 0.0 },
+        { p: '7_2', t: 4500, ps: 0, pl: 0.0, pt: 0.0 },
+    ],
     [
         { p: '8', t: 2500, ps: 0, pl: 0.0, pt: 0.0 },
     ],
@@ -179,6 +182,8 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                     showIndividualImage()
                 }, audioList.bodyAudio2.duration * 1000 + 1000);
             }, 3000);
+
+
         },
         sceneEnd: () => {
             currentMaskNum = 0;
@@ -233,7 +238,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                         if (index == 0)
                             colorObject.current.className = 'hide'
 
-                        if (subMaskNum == 1 && index > 0 || subMaskNum == 5 && index > 0)
+                        if (index > 0 && ([1, 5, 2].includes(subMaskNum)))
                             subMaskRefList[index - 1].current.setClass('hide')
 
                         subMaskRefList[index].current.setClass('appear')
