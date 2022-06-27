@@ -93,8 +93,8 @@ const subMarkInfoList = [
         { p: 'ring_2', t: 24500, ps: 1, pl: 0.2, pt: -0.2 },
     ],
     [
-        { p: '7_1', t: 2500, ps: 0, pl: 0.0, pt: 0.0 },
-        { p: '7_2', t: 4500, ps: 0, pl: 0.0, pt: 0.0 },
+        { p: '7_1', t: 3800, ps: 0, pl: 0.0, pt: 0.0 },
+        { p: '7_2', t: 7000, ps: 0, pl: 0.0, pt: 0.0 },
     ],
     [
         { p: '8', t: 2500, ps: 0, pl: 0.0, pt: 0.0 },
@@ -110,8 +110,8 @@ const subMarkInfoList = [
         { p: '12', t: 9000, ps: 0, pl: 0.0, pt: -0.0 },
     ],
     [
-        { p: '3', t: 1000, ps: 0, pl: 0.0, pt: 0.0 },
-        // { p: 'egg', t: 3000, ps: 0, pl: 0.0, pt: 0.0 },
+        { p: '3', t: 8000, ps: 0, pl: 0.0, pt: 0.0 },
+        { p: 'ring_2', t: 10000, ps: 0, pl: 0.0, pt: 0.0 },
     ]
 ]
 
@@ -182,7 +182,6 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                     showIndividualImage()
                 }, audioList.bodyAudio2.duration * 1000 + 1000);
             }, 3000);
-
 
         },
         sceneEnd: () => {

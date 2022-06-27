@@ -37,13 +37,12 @@ const App = React.forwardRef(({ geo, _startTransition, baseGeo, bgLoaded }, ref)
       sceneList[1].current.sceneLoad()
       sceneList[0].current.sceneLoad()
       
+
       return () => {
       }
     }, []
   )
 
-
-  
   function startFunc(num) {
     bgLoaded()
 
