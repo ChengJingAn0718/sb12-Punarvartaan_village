@@ -174,7 +174,6 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
             blackWhiteObject.current.style.transition = "0.5s"
             currentImage.current.style.transition = '0.5s'
 
-
             setTimeout(() => {
                 setSubMaskLoaded(true)
                 audioList.bodyAudio2.play()
@@ -216,7 +215,9 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
             'scale(' + maskTransformList[currentMaskNum].s + ') '
 
         setTimeout(() => {
-            let timeDuration = 4000
+            let timeDuration = 3000
+            if (currentMaskNum == 0)
+                timeDuration = 0
 
             audioPathList[currentMaskNum].map((value, index) => {
                 timeDuration += bodyAudioList[index].duration * 1000 + 500
@@ -237,7 +238,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                         if (index == 0)
                             colorObject.current.className = 'hide'
 
-                        if (index > 0 && ([1, 5, 2].includes(subMaskNum)))
+                        if (index > 0 && ([1, 5, 2, 6].includes(subMaskNum)))
                             subMaskRefList[index - 1].current.setClass('hide')
 
                         subMaskRefList[index].current.setClass('appear')
@@ -360,7 +361,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
 
                             }
                         }, 500);
-                    }, 2000);
+                    }, 1000);
                 }, timeDuration);
             }, 1000);
 
@@ -407,7 +408,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
                             left: '0%',
                             top: '0%',
                             WebkitMaskImage: 'url("' +
-                                returnImgPath(maskPathList[0][0], true)
+                                returnImgPath(maskPathList[3][0], true)
                                 + '")',
                             WebkitMaskSize: '100% 100%',
                             WebkitMaskRepeat: "no-repeat"

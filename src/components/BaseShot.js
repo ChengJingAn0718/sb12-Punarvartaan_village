@@ -16,7 +16,7 @@ const animationColorList = [
     ['#51c9b5', '#cc55d9', '#dfeb88']
 ]
 
-let titleAudio = new loadSound('intro/1');
+let titleAudio = new loadSound('intro/4');
 
 let clapAudio = new loadSound('clap', true);
 let backAudio = new loadSound('bmusic', true);
@@ -40,7 +40,7 @@ let commonAudio3 = new loadSound('common/common3');
 let subAudioList = []
 
 
-Array.from(Array(16).keys()).map(value => {
+Array.from(Array(15).keys()).map(value => {
     subAudioList.push(new loadSound('word/' + (value + 1)))
 })
 
