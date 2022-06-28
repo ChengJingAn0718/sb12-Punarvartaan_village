@@ -110,8 +110,8 @@ const subMarkInfoList = [
         { p: 'medcine_2', t: 9000, ps: 0, pl: 0.0, pt: -0.0 },
     ],
     [
-        { p: '3', t: 8000, ps: 0, pl: 0.0, pt: 0.0 },
-        { p: 'ring_2', t: 10000, ps: 0, pl: 0.0, pt: 0.0 },
+        { p: 'ring_2', t: 8000, ps: 0, pl: 0.0, pt: 0.0 },
+        { p: '3', t: 10000, ps: 0, pl: 0.0, pt: 0.0 },
     ]
 ]
 
@@ -169,7 +169,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, _startTransition
             audioList.bodyAudio2.src = getAudioPath('intro/2');
 
             blackWhiteObject.current.style.WebkitMaskImage = 'url("' +
-                returnImgPath(maskPathList[currentMaskNum][0], true) + '")'
+                returnImgPath(maskPathList[3][0], true) + '")'
 
             blackWhiteObject.current.style.transition = "0.5s"
             currentImage.current.style.transition = '0.5s'
