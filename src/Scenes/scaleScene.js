@@ -107,7 +107,7 @@ const subMarkInfoList = [
     ],
     [
         { p: '11', t: 8000, ps: 0, pl: 0.0, pt: -0.0 },
-        { p: '12', t: 9000, ps: 0, pl: 0.0, pt: -0.0 },
+        { p: 'medcine_2', t: 9000, ps: 0, pl: 0.0, pt: -0.0 },
     ],
     [
         { p: '3', t: 8000, ps: 0, pl: 0.0, pt: 0.0 },
